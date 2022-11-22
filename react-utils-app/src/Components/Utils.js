@@ -100,6 +100,11 @@ const Utils = () => {
   const ClearAll = () => {
     // setClear("");
     setTyping("");
+    // if (setTyping === "") {
+    counterForWords();
+    counterForChars();
+    CopyToClipboard();
+    // }
   };
 
   useEffect(() => {
@@ -114,16 +119,17 @@ const Utils = () => {
   const counterForWords = () => {
     const wordsArr = typing.split(" ");
     setCountWords(wordsArr.length);
+
     // console.log(wordsArr.length);
     if (wordsArr.length === 1) {
-      setCountWords(countWords);
+      setCountWords(0);
     }
   };
 
   const counterForChars = () => {
     const charsArr = typing.split(" ");
     for (let i = 0; i < charsArr.length; i++) {
-      setCountChars(typing.length - 1);
+      setCountChars(typing.length);
     }
   };
   // Render On UI==>
@@ -172,9 +178,7 @@ const Utils = () => {
           {/*===>> 👇🏻  All Utility buttons started here */}
 
           {/* UpperCase Btn */}
-          <button className="buttons" onClick={UpperCaseFun} disabled>
-            Convert to Uppercase
-          </button>
+          <button onClick={UpperCaseFun}>Convert to Uppercase</button>
           {/* Lowercase-Btn */}
           <button onClick={LowerCase}>Convert to Lowercase</button>
           {/* Remove-Spc-Btn */}
@@ -198,8 +202,7 @@ const Utils = () => {
           </h5>
           <p>0.008 Minutes read</p>
           <h2>Preview</h2>
-          <p>Enter something in the textbox above to preview i
-            t here</p>
+          <p>Enter something in the textbox above to preview i t here</p>
           {/* <p value={{ upperCase }}></p> */}
           <p>{typing}</p>
         </div>
